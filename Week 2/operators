@@ -1,0 +1,28 @@
+// simple arithemtic
+let x=20;
+let y=30;
+z=x+y;
+
+let a=10;
+let b=30;
+c=a/b;
+
+let d=25;
+let e=40;
+let f=3;
+total=d*(e+f);
+//e+f=43*25
+
+// the modulus will represent the remainder
+// military time=24 hours
+// 20 divided by 12= 8pm
+let military=23;
+let normalTime=military%12;
+// we are going to use a for loop
+// the loop will display all the hours
+for((let militaryTime=0; let militaryTime<=24;
+militaryTime++;){
+    normalTime2=militaryTime%12;
+console.log(militaryTime+"military time equals to" +normalTime2+"12 hour clock");
+}
+//
