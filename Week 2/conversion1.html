@@ -1,0 +1,83 @@
+<!-- Eric Bravo-->
+ <!-- IT 102  -->
+  <!--Title Conversion Miles to Kilometers -->
+  <!-- This purpose of this application is for distance unit conversion from miles to kilometers
+   and vice versa -->
+<!-- DISPLAY message asking user for conversion choice (K for kilometers, M for miles) -->
+ <!-- GET user choice input -->
+
+<!-- IF user chooses K or k THEN -->
+<!-- ASK for kilometers value -->
+<!-- kilometers to miles (miles = kilometers * 0.621371) -->
+<!-- DISPLAY result -->
+<!-- ELSE IF user chooses M or m THEN -->
+<!-- ASK for miles value -->
+<!-- CONVERT miles to kilometers (kilometers = miles / 0.621371) -->
+<!-- DISPLAY result -->
+<!-- ELSE -->
+<!-- DISPLAY message: "Invalid choice! Please type 'K' or 'M'." -->
+<!-- END IF -->
+<!-- END -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion application</title>
+    <style>
+        #wrapper{
+            width:940px;
+            margin:20px auto;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div id="wrapper">
+
+        <h1>The Conversion Application</h1>
+        <h3>Convert miles to kilometers and vice versa</h3>
+        <hr>
+        
+        <hr>
+        <br><br>
+        
+    <script language="JavaScript">
+        // 1.609 kilometers in a mile
+        // 0.621 miles in a kilometer
+        alert("Welcome to the Conversion application!");
+        alert("Where you can convert from kilometers to miles and vice versa!");
+        let conversion=prompt("Enter the distance unit you want to convert from \n (k for kilometers or m for miles): ");
+
+        if (conversion=="k"){
+            let strToNmr1=prompt("Enter the distance value in kilometers: ");
+            kilometers=Number(strToNmr1);
+            let miles=kilometers*0.621371;
+            window.alert(`There are ${miles} miles in ${kilometers} kilometers.`);
+            
+        }
+
+        else if(conversion=="m"){
+          let strToNmr2=prompt("Enter the distance value in miles: ");
+            miles=Number(strToNmr2);
+            let kilometers=miles/0.621371;
+            window.alert(`There are ${kilometers} kilometers in ${miles} miles.`);
+
+        } else{
+          window.alert("Invalid choice. Please enter \"k\" or \"m\".");
+        }
+
+        </script>
+        
+
+
+
+
+
+
+    </div>
+    
+  </body>
+  </html>
+
+  
