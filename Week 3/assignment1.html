@@ -1,0 +1,80 @@
+<!-- Eric Bravo
+ IT 102
+
+ Create a HTML login form
+create a text box where users can enter their first name.
+create a text box where users can enter their last name.
+create a text box where users can enter their email address. 
+create a text box where users can enter their password.
+create a submit button
+Display (innerHTML) user first and last name to web browser.
+Display (innerHTML) user email to web browser.
+Display (innerHTML) user password to web browser. -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Login Form</title>
+
+
+  </head>
+<body>
+
+  
+  <
+
+<h2>HTML Forms</h2>
+
+<form name = "uniqueFormName">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="email">Email Address:</label><br>
+  <input type="text" id="email" name="email"><br><br>
+  <label for="password">Password:</label>
+  <input type="text" id="password" name="password"><br><br>
+  <input id="demo1" type="submit" value="Submit">
+  <h2 id="demo2"></h2>
+  <h2 id="demo3"></h2>
+  <h2 id="demo4"></h2>
+  <h2 id="demo5"></h2>
+</form> 
+<br>
+<hr>
+<br>
+<h2 id="demo2"></h2>
+<h2 id="demo3"></h2>
+<h2 id="demo4"></h2>
+<h2 id="demo5"></h2>
+
+
+<script>
+      let firstName, lastName, email, passWord;
+
+      document.getElementById("demo1").onclick=function(){
+        firstName=document.getElementById("fname").value;
+        lastName=document.getElementById("lname").value;
+        email=document.getElementById("email").value;
+        passWord=document.getElementById("password").value;
+        document.getElementById("demo2").innerHTML="First Name:"+firstName+"";
+        document.getElementById("demo3").innerHTML="Last Name"+lastName+"";
+        document.getElementById("demo4").innerHTML="email: "+email+"";
+        document.getElementById("demo5").innerHTML="Password: "+passWord+"";
+        
+        
+
+        
+
+      }
+
+</script>
+
+</body>
+</html>

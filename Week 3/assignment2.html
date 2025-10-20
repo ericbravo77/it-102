@@ -1,0 +1,101 @@
+<!-- Eric Bravo
+ IT 102
+ ASCII ART SQUARE
+ 
+Ask the user to enter a square size between 3 and 30. 
+Continuously prompt the user to enter a number within the specified range if they input a number outside of the acceptable range.
+Don't worry about non-numeric input, assume the user will type a number.
+Using prompt() to get user input.
+Draw a square of the specified size.  For example, if a size of 5 is requested, you'd draw this: -->
+<!-- while (!finishedYet) {
+ count++;
+ finishedYet = prompt("The count is: " + count + ". Done yet? If so, answer T for true");
+ if (finishedYet == "T") {finishedYet = true;}
+ else {finishedYet = false;}
+} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+         function rows(){
+            let strToNmr1, rows;
+            while (true){
+                strToNmr1=prompt("Enter the number of rows (Enter value between 3 and 30):");
+                rows=Number(strToNmr1);
+                if (rows<3 || rows>30){
+                    window.alert("You did not enter a number between 3 and 30: ");
+                    continue;
+                }
+                else {
+                    break;
+
+
+                }
+                }
+                return rows;
+            }
+         function columns(){
+            let strToNmr1, rows;
+            while (true){
+                strToNmr2=prompt("Enter the number of columns (Enter value between 3 and 30):");
+                columns=Number(strToNmr2);
+                if (columns<3 || columns>30){
+                    window.alert("You did not enter a number between 3 and 30: ");
+                    continue;
+                }
+                else {
+                    break;
+
+
+                }
+                }
+                return columns;
+            } 
+
+</script>
+
+
+</head>
+<body>
+
+    <h1>ASCII Art Square</h1>
+
+    <script>
+
+        
+
+        
+    
+       rows=rows();
+       columns=columns();
+
+       let symbol="*";
+       let value;
+
+       for (value=0; value<rows; value++){
+        document.write("<br>");
+        for (count=0; count<columns; count++){
+            document.write(symbol);
+
+        }
+       }
+       
+       
+
+
+        
+
+        
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
