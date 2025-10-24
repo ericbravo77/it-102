@@ -1,0 +1,233 @@
+<!-- Eric Bravo
+ IT 102
+ Create a FUNCTION calculateGrossPay() with one parameter, hoursWorked.
+
+IF hoursWorked is less than or equal to 40 THEN
+        Set grossPay to hoursWorked multiplied by 19.00
+ELSE
+        Set regularHours to 40
+        Set overtimeHours to hoursWorked minus regularHours
+        Set regularPay to regularHours multiplied by 19.00
+        Set overtimePay to overtimeHours multiplied by 19.00 and then multiplied by 1.5
+        Set grossPay to regularPay plus overtimePay
+RETURN the value of grossPay
+Create a FUNCTION calculateSocialSecurity() with one parameter, grossPay.
+
+Set socialSecurityRate to 0.062
+Set socialSecurity to grossPay multiplied by socialSecurityRate
+RETURN the value of socialSecurity
+Create a FUNCTION calculateMedicare() with one parameter, grossPay.
+
+Set medicareRate to 0.0145
+Set medicare to grossPay multiplied by medicareRate
+RETURN the value of medicare
+Create a FUNCTION calculateWithholding() with two parameters, grossPay and allowances.
+
+Set withholdingAllowanceAmount to 77.90
+Set withholdingBase to allowances multiplied by withholdingAllowanceAmount
+Set taxableIncome to grossPay minus withholdingBase
+Set withholdingRate to 0.20
+Set withholding to taxableIncome multiplied by withholdingRate
+RETURN the value of withholding
+Create a FUNCTION calculateNetPay(), with 4 parameters, grossPay, socialSecurity, medicare and withholding.
+
+Set netPay to grossPay minus socialSecurity minus medicare minus withholding
+RETURN the value of netPay
+Create a FUNCTION generatePaystub() with 3 parameters, employeeName, hoursWorked and allowances.
+
+Set grossPay to calculateGrossPay(hoursWorked)
+Set socialSecurity to calculateSocialSecurity(grossPay)
+Set medicare to calculateMedicare(grossPay)
+Set withholding to calculateWithholding(grossPay, allowances)
+Set netPay to calculateNetPay(grossPay, socialSecurity, medicare, withholding)
+    
+    Display to Webpage "Employee Name: " + employeeName
+    Display to Webpage "Hours Worked: " + hoursWorked
+    Display to Webpage "Gross Pay: $" + grossPay
+    Display to Webpage "Social Security: $" + socialSecurity
+    Display to Webpage "Medicare: $" + medicare
+    Display to Webpage "Withholding: $" + withholding
+    Display to Webpage "Net Pay: $" + netPay
+ 
+
+Create a FUNCTION doPayroll() with no parameters.  This is the main program.
+
+set hoursWorked to hours worked from web form.
+set allowances to the number of withholding allowances from web form.
+set employeeName to the first and last name from the web from.
+call generate pay stub function and provide the three parameters. -->
+
+<!DOCTYPE html>
+<html>
+        <head>
+
+                <title>Ajax Payroll</title>
+                <style>
+                        #wrapper{
+                                width:940px;
+                                margin:20px auto;
+                        }
+                </style>
+                <script>
+
+                
+                        function grossPay(hours) {
+                                let gPay;
+                                const regularRate = 19.00;
+                                const overtimeRate = regularRate * 1.5;
+
+                                hours = Number(hours);
+
+                                if (hours <= 40) {
+                                gPay = hours * regularRate;
+                                } else {
+                                const regularPay = 40 * regularRate;
+                                const overtimeHours = hours - 40;
+                                const overtimePay = overtimeRate * overtimeHours;
+                                gPay = regularPay + overtimePay;
+                                }
+
+        
+                                return gPay.toFixed(2);
+
+                        }
+                        function ssDeduction(gPay){
+                                let ssDeduct;
+                                ssDeduct=gPay*.062;
+                                ssDeduct=ssDeduct.toFixed(2);
+                                return ssDeduct;
+                        }
+                        function medicareDeduct(gPay){
+                                let medDeduct;
+                                medDeduct=grossPay*.0145;
+                                medDeduct=medDeduct.toFixed(2);
+                                return medDeduct;
+
+                        }
+                        function withholdingCalculation(gPay, allowances){
+                                let withholdingRate=0.20;
+                                let withholdingAllowanceAmount=77.90;
+                                let withholdingBase=allowances*withholdingAllowanceAmount;
+                                let taxableIncome=gPay-withholdingBase;
+                                let withholding=taxableIncome*withholdingRate;
+                                return withholding;
+
+                        }
+
+                        function netPay(gPay, ssDeduct, medDeduct, withholding){
+                                let npay
+                                nPay=grossPay-ssDeduct-medicareDeduct-withholding;
+                                nPay=netPay.toFixed(2);
+                                return nPay;
+                        }
+
+                        function generatePayStub(employeeName, hours, allowances){
+                                gPay=grossPay(hours);
+                                ssDeduct=ssDeduction(gpay);
+                                medDeduct=medicareDeduct(gpay);
+                                withholding=withholdingCalculation(gpay, allowances);
+                                nPay=netPay(gpay,ssDeduct, medDeduct, withholding);
+                                document.getElementById("payrollStub").textContent=`Employee Name: ${employeeName}`;
+                                document.getElementById("payrollStub").innerHTML=`Hours Worked: ${hours}`;
+                                document.getElementById("payrollStub").innerHTML=`Grpss Pay: $${gpay}`;
+                                document.getElementById("payrollStub").innerHTML=`Social Security: $${ssDeduct}`;
+                                document.getElementById("payrollStub").innerHTML=`Medicare: $${medDeduct}`;
+                                document.getElementById("payrollStub").innerHTML=`Grosspay: $${withholding}`;
+                                document.getElementById("payrollStub").innerHTML=`Grosspay: $${nPay}`;
+        
+                                
+                        }
+
+                        function doPayroll(){
+                                const hours=document.employeeForm.elements[2].value;
+                                const allowances=document.employeeForm.elements[3].value;
+                                const firstName=document.employeeForm.elements[0].value;
+                                const lastName=document.employeeForm.element[1].value;
+                                const employeeName=firstName+" "+lastName;
+                                return hours, allowances, employeeName
+                        }
+
+                        
+
+
+
+
+
+
+
+
+
+                </script>
+
+
+
+
+
+
+        </head>
+        <body>
+
+                <div id="wrapper">
+
+                        <h1>Ajax Inc</h1>
+                        <br>
+                        <hr>
+                        <h2>Payroll Application</h2>
+                        <hr>
+                        <h2>Employee Information</h2>
+                        <form name="employeeForm">
+                        First Name: <input type="text"><br />  
+                        Last Name: <input type="text"><br />
+                        Enter Hours Worked: <input type="text"><br />
+                        Enter number of withholding allowances: <input type="text"><br />
+                        <input type="button" value="Submit" onClick="doPayroll()">
+                         </form>
+                         <br>
+                         <hr>
+                         <h2>Payroll Stub</h2>
+                         <p id="payrollStub"></p>
+
+
+                <script>
+
+
+
+                        
+
+
+
+                        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </script>
+
+                </div>
+
+
+
+
+
+
+
+        </body>
+
+
+
+
+
+</html>
