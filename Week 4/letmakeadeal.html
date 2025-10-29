@@ -1,0 +1,128 @@
+<!-- Eric Bravo -->
+ <!-- IT102 -->
+  <!-- let's Make a Deal" is a popular game show where contestants are given 
+   the opportunity to trade a known prize for an unknown prize. 
+The game typically involves three doors, behind one of which is a valuable prize, 
+such as a car or a vacation package, 
+while the other two doors conceal less valuable or even worthless prizes, like a goat. --> --
+<!-- et's Make a Deal" is a popular game show where contestants are given the opportunity to 
+ trade a known prize for an unknown prize. 
+The game typically involves three doors,
+ behind one of which is a valuable prize, such as a car or a vacation package, 
+ while the other two doors conceal less valuable or even worthless prizes, like a goat.> -->
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Let's Make a Deal</title>
+    </head>
+    <body>
+        <h1>Let's Make a Deal</h1>
+        <hr>
+        <p>Choose a door:</p>
+        <select id="doorSelection">
+            <option value="0">Select a Door</option>
+            <option value="1">Door #1 </option>
+            <option value="2">Door #2</option>
+            <option value="3">Door #3</option>
+        </select>
+        <button onclick="doorPrize()">Select</button>
+
+        <p id="prize1">Good Luck!</p>
+        <p id="prize2"></p>
+        <p id="prize3"></p>
+        <p id="prize4"></p>
+
+        <script>
+
+            var prize1={
+                door1:"JavaScript Text Book",
+                pages:350,
+                title:"Transform your life! Learn JavaScript!",
+                publisher:"North Seattle College",
+                author:"Wilfred Smith",
+                reveal:function (){
+                    let phrase1=`Become a new person by learning JavaScript with the book "${prize1.title}"`;
+                    let phrase2=`This new book published by ${prize1.publisher} is filled with ${prize1.pages} pages of excitement!`;
+
+                    document.getElementById("prize2").innerHTML=""+phrase1;
+                    document.getElementById("prize3").innerHTML=""+phrase2;
+
+                }
+             }
+
+            var prize2={
+                door2:"Rambo First Blood VHS cassette tape with a VCR",
+                actor:"Sylvester Stallone",
+                length:"2 hours 10 minutes",
+                reveal:function (){
+                    let phrase3="Go back more than 40 years ago and experience the joy of watching a movie on VHS!";
+                    let phrase4=`You will watch ${prize2.length} of the movie Rambo First Blood starring ${prize2.actor}!`;
+                    let phrase5="Watch as a former Green Beret takes on an entire small town Sheriffs department!";
+                    document.getElementById("prize2").innerHTML=""+phrase3;
+                    document.getElementById("prize3").innerHTML=""+phrase4;
+                    document.getElementById("prize4").innerHTML=""+phrase5;
+            
+                }
+            }
+            var prize3={
+                door3:" a new fully paid home in Kahului Maui Hawaii!",
+                squareFeet:2550,
+                cost:"$2,100,000",
+                declare:function(){
+                    let phrase6=`This newly built home is fully furnished and takes up ${prize3.squareFeet} square feet of land!`;
+                    let phrase7=`You will live a tropical dream as you stay in your Maui Paradise home that is worth more than ${prize3.cost}!`;
+                    document.getElementById("prize2").innerHTML=""+phrase6;
+                    document.getElementById("prize3").innerHTML=""+phrase7;
+    
+                }
+
+
+            }
+            
+
+            function doorPrize() {
+                var selection=document.getElementById("doorSelection").value;
+                if (selection=="1"){
+                    document.getElementById("prize1").innerHTML=`You win a ${prize1.door1}!`;
+                    prize1.reveal();
+                }
+
+                else if(selection=="2"){
+                    document.getElementById("prize1").innerHTML=`You win a ${prize2.door2}!`;
+                    prize2.reveal();
+                }
+
+                else if(selection=="3"){
+                    document.getElementById("prize1").innerHTML=`You win a ${prize3.door3}!`;
+                    prize3.declare();
+                    
+                }
+                
+               
+              
+                
+            } 
+            
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </script>
+    </body>
+</html>
