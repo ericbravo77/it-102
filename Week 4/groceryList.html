@@ -1,0 +1,82 @@
+<!-- Eric Bravo -->
+ <!-- IT102 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>String</title>
+        <style>
+            #wrapper{
+                width:940px;
+                margin:20px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+
+             <h2>Grocery List</h2>
+    Enter grocery items separated by commas.
+    <br>
+    <textarea id="groceryInput" placeholder='Enter grocery items and sperate with comma ","when finished.'></textarea>
+    <br>
+    <button onclick="createGroceryList()">Create Grocery List</button>
+    <p id="groceryList"></p>
+    <p>Total items: <span id="totalItems"></span></p>
+
+    <script>
+        function createGroceryList() {
+            var stringList=document.getElementById("groceryInput").value;
+            let groceryList=stringList.split(",");
+            for (let i=0; i<groceryList.length; i++){
+                groceryList[i]=groceryList[i].trim();
+            }
+            groceryList.sort();
+            let listHtml="";
+            for (let i=0; i<groceryList.length;i++){
+                listHtml+=`${i+1}. ${groceryList[i]}<br>`;
+            }
+
+            document.getElementById("groceryList").innerHTML=listHtml;
+            document.getElementById("totalItems").innerHTML=`${groceryList.length}`;
+        
+            
+
+
+    //Check for empty input from user
+    
+    // Split input string into array
+    
+    // Trim white space from each items by looping through array
+
+    // Sort groceryItems alphabetically
+    
+    // Display grocery list to webpage
+
+    };
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </body>
+
+</html>
