@@ -1,0 +1,81 @@
+<!-- Eric Bravo -->
+ <!-- IT102  -->
+  <!-- In order to model card games better, we need to have the code equivalent of a deck of cards. As a starting point towards this deck of cards, we should begin with a good card object. Your assignment today is to create and test a card object. Here some things your card object should have:
+
+Create Card Function Constructor/Prototype.
+Properties	Methods
+Suit		show()
+Rank		hide()
+isVisible		
+ -->
+<!-- Instantiate at least 2 different cards. (You can call them card1 and card2, or something like that.) 
+ Display the 2 cards to the web page with the Suit, Rank and isVisible values.
+ Use the show() or hide() on both of the cards to change the "isVisible" object property.
+ Again, display the 2 cards to the web page with the Suit, Rank and isVisible values to show the change.
+Card Object
+
+function Card(  ){
+
+  //create the suit property and assign it the value from the parameter.
+
+  //create the rank property and assign it the value from the parameter.
+
+  //create the isVisible property and assign boolean false to it.
+
+  //create the show() method.  This method assigns the boolean true to this.isVisible.
+
+  //create the hide() method.  This method assigns the boolean false to this.isVisible. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Playing Card Object</title>
+      
+    </head>
+    <body>
+            <h1>Playing Cards</h1>
+            
+
+        <script>
+            function Card(name, suit, rank, isVisible){
+                this.name=name;
+                this.suit=suit;
+                this.rank=rank;
+                this.isVisible=isVisible;
+                this.show=function(){
+                    this.isVisible=true;
+                    document.write(` ${this.name} Suit: ${this.suit}; Rank: ${this.rank}; Is it visible: ${this.isVisible}<br>`);
+                }
+                this.hide=function(){
+                    this.isVisible=false;
+                    document.write(`${this.name} Suit:; Rank:; Is it visible: ${this.isVisible}<br>`);
+                }
+                    
+                }
+            
+
+            var card1=new Card("Card One: ","Hearts", "Queen", false);
+            var card2=new Card("Card Two: ","Diamonds", "Ace", false);
+            var card3=new Card("Card Three", "Clubs", "King", false);
+
+            card1.show();
+            card2.show();
+            card1.hide();
+            card2.hide(); 
+            card3.hide();
+            card3.show();
+
+        
+
+
+
+
+
+
+
+        </script>
+
+    </body>
+
+
+</html>
