@@ -1,0 +1,116 @@
+<!-- Eric Bravo -->
+ <!-- IT102 -->
+  <!-- Changing HTML properties -->
+   <!-- Write three more JavaScript functions to control other things about how this web page looks.
+font size
+border thickness
+border color -->
+ <!DOCTYPE html>
+<html>
+  <body>
+    <!-- HTML Table for Testing Purposes -->
+    <table id = "myTable" style="border: 10px solid red; font-size: 20px; font-weight: bold">
+      <tr id = "row1" style = "color: blue" >
+        <td id = "1.1" style = "border: 2px solid black;font-size: 20px;">Row 1 Col 1</td>
+        <td id = "1.2" style = "border: 2px solid black">Row 1 Col 2</td>
+      </tr>
+    </table>
+
+    <!--Button to Launch a Function -->
+    <br><br>
+    <button type="submit" onclick = "changeTextColor()">Change Text Color</button>
+    <br><br>
+    <button type="submit" onclick="fontSizeAdust()">Change Font Size</button>
+    <br><br>
+    <button type="submit" onclick="borderThickness()">Adjust Border Thickness</button>
+    <br><br>
+    <button type="submit" onclick="borderColor()">Change Border Color</button>
+    <!--Add 4th Button-->
+
+    <script>
+      // First JavaScript Function
+      // Changes text color from blue to green and back again
+
+     function changeTextColor(){
+       var textcolor = document.getElementById("row1").style.color;
+       if (textcolor== "green"){
+         textcolor = "blue";
+       }else{
+         textcolor = "green";
+       }
+       document.getElementById("row1").style.color = textcolor;
+     }
+
+     function fontSizeAdust(){
+        var fonts=document.getElementById("1.1").style.fontSize;
+        var fonts1=document.getElementById("1.2").style.fontSize;
+        if (fonts=="20px" && fonts1=="20px"){
+            fonts="25px";
+            fonts1="25px";
+        }
+        else{
+            fonts="20px";
+            fonts1="20px";
+        }
+        document.getElementById("1.1").style.fontSize=fonts;
+        document.getElementById("1.2").style.fontSize=fonts1;
+     }
+
+     function borderThickness(){
+        var thickness=document.getElementById("myTable").style.border;
+        var thickness1=document.getElementById("1.1").style.border;
+        var thickness2=document.getElementById("1.2").style.border;
+       if (thickness1=="2px solid black" && thickness2=="2px solid black"&& thickness=="10px solid red"){
+        thickness="15px solid red";
+        thickness1="4px solid black";
+        thickness2="4px solid black";
+
+       }
+       else{
+        thickness="10px solid red";
+        thickness1="2px solid black";
+        thickness2="2px solid black";
+       }
+       document.getElementById("myTable").style.border=thickness;
+       document.getElementById("1.1").style.border=thickness1;
+       document.getElementById("1.2").style.border=thickness2;
+
+
+     }
+
+     function borderColor(){
+        var bColor1=document.getElementById("myTable").style.borderColor;
+        var bColor2=document.getElementById("1.1").style.borderColor;
+        var bColor3=document.getElementById("1.2").style.borderColor;
+        if (bColor1=="red"){
+            bColor1="green";
+        }
+        else{
+            bColor1="red"
+        }
+        if (bColor2=="black"&& bColor3=="black"){
+            bColor2="yellow";
+            bColor3="yellow";
+        }
+        else{
+            bColor2="black";
+            bColor3="black";
+        }
+        document.getElementById("myTable").style.borderColor=bColor1;
+        document.getElementById("1.1").style.borderColor=bColor2;
+        document.getElementById("1.2").style.borderColor=bColor3;
+
+     }
+
+    </script>
+  </body>
+</html> 
+
+
+
+
+
+
+
+
+
