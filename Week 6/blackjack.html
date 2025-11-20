@@ -1,0 +1,517 @@
+  <!-- Eric Bravo -->
+   <!-- IT102 -->
+    <!-- Black Jack Assignment -->
+     <!-- Integrate your previous code from  "Playing Card Object" and "Deck of Cards" for the playing cards.
+    Select a random card from your deck of cards.
+    The player should not be limited to 3 cards - the player should be able to take hits (get additional cards) as long as the person desires.
+    You don’t need to develop a full Blackjack game simulation. 
+    In this version, the dealer will receive their cards only after the player has finished drawing theirs. -->
+    <!-- Pseudocode -->
+    <!-- Create Class of Card and class of Deck with propertites and methods -->
+     <!--Create a function to instantiate a deck object -->
+     <!-- Create an object to randomly draw cards -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Black Jack</title>
+    <style>
+      body{
+        background-color: rgb(170, 170, 39);
+      }
+      #wrapper{
+        width:940px;
+        margin:20px auto;
+        background-color:tomato;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+
+    <input type="button" value="Start Game" onclick="main()">
+    <h1>Black Jack</h1>
+    <hr>
+    <br>
+    <br>
+    <h2>Your Hand</h2>
+    <br>
+    <textarea style="width:300px; height: 200px;font-size: large;" id="input1" placeholder="Pick a Card"></textarea>
+    <br>
+    <br>
+    <h2>Value of your hand:</h2>
+    <br>
+    <textarea id="input2" placeholder="Value" style="font-size: large;"></textarea>
+    <br>
+    <br>
+    <h3 id="first" style="color: red;"></h3>
+    <br>
+    <h2>Dealer's Hand</h2>
+    <br>
+    <textarea style="width:300px; height: 200px;font-size: large;" id="input3" placeholder="Pick a Card"></textarea>
+    <br>
+    <br>
+    <h2>Value of Dealer's hand:</h2>
+    <br>
+    <textarea id="input4" placeholder="Value" style="font-size: large;"></textarea>
+    <br>
+    <br>
+    <h3 id="first" style="color: red;"></h3>
+    <h3 id="second" style="color: red;"></h3>
+    <h1>Decision:</h1>
+    <h2 id="third"></h2>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+      function createDeck(){
+        class Card{
+          constructor(suit, rank){
+            this.suit=suit;
+            this.rank=rank;
+            this.faceUp=false;
+          }
+          reveal(){
+            this.faceUp=true;
+          }
+          hide(){
+            this.faceUp=false;
+          }
+          toString(){
+            if (this.faceUp){
+              return `${this.rank} of ${this.suit}`;
+             }
+             else{
+              return `Card is face down`;
+             }
+          }
+        }
+        class Deck{
+          constructor(){
+            this.cards=[];
+            this.suits=["Hearts","Diamonds","Clubs","Spades"];
+            this.ranks=["Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"];
+
+            for (let suit of this.suits){
+              for (let rank of this.ranks){
+                this.cards.push(new Card(suit, rank));
+
+              }
+            }
+          }
+        }
+        let deck=new Deck();
+        return deck;
+
+
+      }
+
+      function hitMe(deck1){
+        var number=Math.floor(Math.random()*52);
+        var card=deck1.cards[number];
+        return card;
+      }
+
+      function cardValue(card){
+        switch(card){
+          case "Ace of Diamonds":
+            value=1;
+            return value;
+            break;
+          case "Ace of Hearts":
+            value=1;
+            return value;
+            break;
+       
+          case "Ace of Clubs":
+            value=1;
+            return value;
+            break;
+          case "Ace of Spades":
+            value=1;
+            return value;
+            break;
+          case "King of Diamonds":
+            value=10;
+            return value;
+            break;
+          case "King of Hearts":
+            value=10;
+            return value;
+            break;
+          case "King of Clubs":
+            value=10;
+            return value;
+            break;
+          case "King of Spades":
+            value=10;
+            return value;
+            break;
+          case "Queen of Diamonds":
+            value=10;
+            return value;
+            break;
+          case "Queen of Hearts":
+            value=10;
+            return value;
+            break;
+          case "Queen of Clubs":
+            value=10;
+            return value;
+            break;
+          case "Queen of Spades":
+            value=10;
+            return value;
+            break;
+          case "10 of Diamonds":
+            value=10;
+            return value;
+            break;
+          case "10 of Hearts":
+            value=10;
+            return value;
+            break;
+          case "10 of Clubs":
+            value=10;
+            return value;
+            break;
+          case "10 of Spades":
+            value=10;
+            return value;
+            break;
+          case "9 of Diamonds":
+            value=9;
+            return value;
+            break;
+          case "9 of Hearts":
+            value=9;
+            return value;
+            break;
+          case "9 of Clubs":
+            value=9;
+            return value;
+            break;
+          case "9 of Spades":
+            value=9;
+            return value;
+            break;
+          case "8 of Diamonds":
+            value=8;
+            return value;
+            break;
+          case "8 of Hearts":
+            value=8;
+            return value;
+            break;
+          case "8 of Clubs":
+            value=8;
+            return value;
+            break;
+          case "8 of Spades":
+            value=8;
+            return value;
+            break;
+          case "7 of Diamonds":
+            value=7;
+            return value;
+            break;
+          case "7 of Hearts":
+            value=7;
+            return value;
+            break;
+          case "7 of Clubs":
+            value=7;
+            return value;
+            break;
+          case "7 of Spades":
+            value=7;
+            return value;
+            break;
+          case "6 of Diamonds":
+            value=6;
+            return value;
+            break;
+          case "6 of Hearts":
+            value=6;
+            return value;
+            break;
+          case "6 of Clubs":
+            value=6;
+            return value;
+            break;
+          case "6 of Spades":
+            value=6;
+            return value;
+            break;
+          case "5 of Diamonds":
+            value=5;
+            return value;
+            break;
+          case "5 of Hearts":
+            value=5;
+            return value;
+            break;
+          case "5 of Clubs":
+            value=5;
+            return value;
+            break;
+          case "5 of Spades":
+            value=5;
+            return value;
+            break;
+
+          case "4 of Diamonds":
+            value=4;
+            return value;
+            break;
+
+          case "4 of Hearts":
+            value=4;
+            return value;
+            break;
+
+          case "4 of Clubs":
+            value=4;
+            return value;
+            break;
+          case "4 of Spades":
+            value=4;
+            return value;
+            break;
+          
+          case "3 of Diamonds":
+            value=3;
+            return value;
+            break;
+          
+          case "3 of Hearts":
+            value=3;
+            return value;
+            break;
+          case "3 of Clubs":
+            value=3;
+            return value;
+            break;
+          case "3 of Spades":
+            value=3;
+            return value;
+            break;
+          case "2 of Diamonds":
+            value=2;
+            return value;
+            break;
+
+          case "2 of Hearts":
+            value=2;
+            return value;
+            break;
+
+          case "2 of Clubs":
+            value=2;
+            return value;
+            break;
+
+          case "2 of Spades":
+            value=2;
+            return value;
+            break;
+
+          case "Jack of Diamonds":
+            value=10;
+            return value;
+            break;
+
+          case "Jack of Hearts":
+            value=10;
+            return value;
+            break;
+
+          case "Jack of Clubs":
+            value=10;
+            return value;
+            break;
+
+          case "Jack of Spades":
+            value=10;
+            return value;
+            break;
+        }
+        }
+
+
+      function usersPlay(deck1){
+        var value;
+        var total=0;
+        var hand=[];
+        var values=[];
+        var dealerValues=[];
+        var answer;
+          do{
+            alert("Take a card!");
+            total+=1;
+            card=hitMe(deck1);
+            card.reveal();
+            card1=card.toString();
+            while (hand.includes(card1)){
+              card1=hitMe(deck1);
+              card1.reveal();
+              card1.toString();
+            }
+            value1=cardValue(card1);
+            hand.unshift(card1);
+            values.unshift(value1);
+            alert(`${hand.toString()} ${total} card(s).`);
+            answer=prompt("Do you want another card?")
+          }while (answer=="yes"|| answer=="Yes"){
+            if (answer=="no"|| answer=="No"){
+              let sum1=values.reduce((a,b)=>a+b);
+              if (sum1>21){
+                document.getElementById("input1").innerHTML=`Here is your hand: ${hand.toString()}`;
+                document.getElementById("input2").innerHTML=`Total value is: ${sum1}`;
+                document.getElementById("first").innerHTML="YOU BUSTED! You LOSE!";
+                sum1=0;
+                hand.unshift(sum1);
+                return hand;
+
+              }
+              else{
+                document.getElementById("input1").innerHTML=`Here is your hand: ${hand.toString()}`;
+                document.getElementById("input2").innerHTML=` ${sum1}`;
+                hand.unshift(sum1);
+                return hand;
+                
+              }
+            
+              }
+  
+
+              
+
+              }
+              
+              
+            
+          }
+          function dealersPlay(deck1, hand){
+            var dealerHand=["empty","empty"];
+            var dealerValue=[];
+            var playersSum=hand.splice(0,1);
+            var dealerHand1=dealerHand.concat(hand);
+            do{
+              card=hitMe(deck1);
+              card.reveal();
+              card1=card.toString();
+              while (dealerHand1.includes(card1)){
+                card1=hitMe(deck1);
+                card1.reveal();
+                card1.toString();
+              }
+              value1=cardValue(card1);
+              dealerHand.unshift(card1);
+              dealerValue.push(value1)
+
+            }while(dealerHand[1]=="empty")
+            dealerHand.pop();
+            dealerHand.pop();
+
+            let sum2=dealerValue.reduce((a,b)=>a+b);
+            if (sum2>21){
+                document.getElementById("input3").innerHTML=`Here is dealer's hand: ${dealerHand.toString()}`;
+                document.getElementById("input4").innerHTML=`Total value is: ${sum2}`;
+                document.getElementById("second").innerHTML="DEALER BUSTED! HE LOST!";
+                sum2=0;
+                playersSum.push(sum2);
+                return playersSum;
+
+              }
+            else{
+                document.getElementById("input3").innerHTML=`Here is dealer's hand: ${dealerHand.toString()}`;
+                document.getElementById("input4").innerHTML=`Dealer's total value: ${sum2}`;
+                playersSum.push(sum2);
+                return playersSum;
+                
+              }
+
+
+
+
+          }
+
+          function decision(playersSum){
+            if (playersSum[0]>playersSum[1]){
+              document.getElementById("third").innerHTML="Congratulations! You win!";
+
+            }
+            else if (playersSum[0]<playersSum[1]){
+              document.getElementById("third").innerHTML="Dealer Wins!";
+
+
+            }
+            else{
+              document.getElementById("third").innerHTML="It's a tie!";
+
+            }
+
+            }
+          
+        
+        
+
+        
+          
+        
+        
+        
+
+        
+
+      
+        
+
+      
+        
+
+      
+
+      function main(){
+        deck1=createDeck();
+        hand=usersPlay(deck1);
+        playersSum=dealersPlay(deck1, hand);
+        decision(playersSum);
+       
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+    </div>
+  </body>
+
+</html>
