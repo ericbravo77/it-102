@@ -1,0 +1,62 @@
+<!-- Eric Bravo -->
+<!--Created a Main function which is the onclick function for the "Create Deck button. This
+function creates the 52 deck of cards in order. The Main function is composed of two functions
+:the Create Deck function and the Manipulate Deck function. The Create Deck function forms the
+the 52 deck object. It is composed of two classes: the Card class and the Deck class. The manipulate
+deck function uses a "Switch" statemenet to evaluate a card variable. Depending on the  condition
+of the variable, code is executed that creates an HTML image tag that contains an image of a card
+to corresponds to the card variable. 
+I created a scramble function which performs the shuffling of the deck object. It is onclick function
+for the Shuffle button. This function is composed of the two functions: the "createDeck function" and the "shuffle Deck" 
+function. -->
+<!-- Function  -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Jack</title>
+    <link rel="stylesheet" href="/CSS/blackjack.css">
+</head>
+<body>
+    <h1 style="color: red;"><i>Black Jack Game Board</i></h1>
+    <h2>Dealer Hand:<span id="dealer-value"></span></h2>
+    <div id="dealer-hand">
+
+        
+    
+
+    </div>
+    <h2>Player Hand:<span id="player-value"></span></h2>
+    <div id="player-hand">
+        
+
+    </div>
+    <br>
+    <input id="Shuffle" type="button" value="Shuffle" onclick="scrambleDeck()"></input>
+    <input id="Hit" type="button" value="Hit"></input>
+    <input id="Stay" type="button" value="Stay"></input>
+    <input id="Restart" type="button" value="Restart" onclick="resetGame()"></input>
+    <p id="result"></p>
+    <div id="dealer-score">
+        <h3>Dealer Score:</h3>
+    <textarea id="score1" placeholder='Dealer Score'></textarea>
+    </div>
+    <div id="player-score">
+        <h3>Player Score:</h3>
+    <textarea id="score2" placeholder='Player Score'></textarea>
+    </div>
+    <div id="result">
+        <h1 id="result"></h1>
+    </div>
+
+
+
+
+    <script defer src="/JavaScript/blackjack.js"></script>
+</body>
+</html>
