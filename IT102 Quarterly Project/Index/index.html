@@ -1,0 +1,422 @@
+<!-- Eric Bravo -->
+ <!-- IT102 Quarterly Project -->
+  <!-- Ambulance Prearrival Report -->
+   <!-- Purpose -->
+    <!-- The program will used by Ambulances and Medics to create a prearribal report of a patient they are transporting
+     to the hospital. The ambulance will download the application on behalf of the hospital they are assigned to. The prearrival
+     report will be sent to the Charge Nurse of the admitting unit who will use it to prepare resourses for the arrival. Data
+     that will be collected will be demographic data to indentify the patient, vitals taken in the field, and a short report using
+     short hand medical charting.
+      < --HTML: Create three forms: One form for Ambulance data, one patient demographic data, and for vitals data. -->
+   <!-- Create function "CreateFile" which will include a constructor with the demographic properties of name, birthdate, gender -->
+<!-- Create a function obtainVitals which will store the vitals entered in the field and store them in an array. The function 
+ will Return the array-->
+ <!--  Create a function obtainReport. This function will store string data from a textarea Form into an area. This will be data
+   from the EMT or Medic's report.This function
+   function will be assigned to break down the string into smaller components that can be stored in  an array-->
+   <!-- Create a function called ambulanceData. This function will obtain variables that store information of the
+    ambulance transport.--> 
+    <!-- Create a function to produce a report that will be sent to Charge Nurse -->
+
+
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Ambulance Prearrival Report</title>
+        
+            <link rel="stylesheet" href="/CSS/ambulancefinalproject.css">
+        </head>>
+        <div id="header">
+            <h1>Lasam Regional Medical Center</h1>
+        </div>
+        <br>
+        <!-- Login screen -->
+        <div id="login-screen">
+            <h2>Login</h2>
+            <ul id="list1">
+                <li>Name must contain a space</li>
+                <li>Password cannot have a space</li>
+                <li>Name must not contain a number</li>
+                <li>Name must be at least 6 characters</li>
+                <li>Name cannot be more than 18 characters.</li>
+                <li>Password must be at least 6 characters</li>
+                <li>Password cannot be more than 12 characters</li>
+            </ul>
+            <form id="login">
+            <label>Name:</label>
+            <input id="login-input1" type="text" name="name"><br>
+            <label>Password:</label>
+            <input id="login-input2" type="password" name="password"><br>
+            <input type="button" value="Submit" id="button1"><br>
+            </form>
+            <br>
+            <h3 id="error-message"></h3>
+
+        </div>
+        <div id="content">
+        
+
+        <div id="main-content" style="display:none">
+        <div id="wrapper">
+        <div id="div1">
+        <h2>Ambulance Transport Details:</h2>
+        <form id="form1">
+            <label>Ambulance Number: </label>
+            <input type="text" id="input1">
+        <p>Patient Transport Level:</p>
+        <select id="input2">
+            <option value="0">Select transport type:</option>
+            <option value="1">Basic Life Support</option>
+            <option value="2">Advance Life Support</option>
+            <option value="3">Medic</option>
+            <option value="4">Airlift</option>
+        </select>
+        <br>
+        <br>
+          <p>Patient Transfer Type:</p>
+        <select id="input3">
+            <option value="0">Transfer From:</option>
+            <option value="1">From Hospital:</option>
+            <option value="2">From Clinic:</option>
+            <option value="3">Nursing Facility:</option>
+            <option value="4">Other:</option>
+        </select>
+        </form>
+            </div>
+        <br>
+        <div id="div2">
+            <h2>Patient Details/Vitals: </h2>
+        <form id="form2">
+            <label>Date</label>
+            <input id="date" type="text" name="date">
+            <label>Patient Name:</label>
+            <input type="text" id="input4" name="name"><br>
+            <label>Birthdate:</label>
+            <input type="text" id="input5" name="date"><br>
+            <label>Gender:</label>
+            <input type="text" id="input6" name="gender"><br>
+            <label>SSN:</label>
+            <input type="text" id="input7" name="number"><br>
+            <label>Heart Rate:</label>
+            <input type="text" id="input8" name="rate"><br>
+            <label>Blood Pressure:</label>
+            <input type="text" id="input9" name="pressure"><br>
+            <label>Respirations: </label>
+            <input type="text" id="input10" name="respirations"><br>
+            <label>Blood Sugar:</label>
+            <input type="text" id="input11" name="sugar"><br>
+            <label>Oxygen Saturation:</label>
+            <input type="text" id="input12" name="oxygen"><br>
+            <label>Temperature:</label>
+            <input type="text" id="input13" name="temperature"><br>
+         </form>
+         </div>
+         <br>
+         <div id="div3">
+            <h2>Enter Brief Summary:</h2>
+            Use Shorthand Medical Charting
+            <br>
+            <textarea id="ambInput" placeholder="Ex Temp:101;c/o:Chest px; HX:CHF;"></textarea>
+            <br>
+            <input type="button" id="submit1" value="Submit" onclick="main()">
+        </div>
+        <br>
+        <div id="div4">
+            <h2>Ambulance Pre-arrival Report:</h2>
+            Report will be sent to Hospital
+            <br>
+            <textarea id="output1" style="font-size: large;"></textarea>
+            <br>
+        </div>
+        </div>
+
+        <script>
+            // main page
+
+//login screen section
+//let regex = /hello/;
+//let result = 'hello world'.match(regex);
+// console.log(result);  // ["hello"]
+// let regex = /world/;
+// let newString = 'hello world'.replace(regex, 'universe');
+// console.log(newString);  // "hello universe"
+
+// Function to validate username
+var ambulanceArray=[];
+   
+                function loginValues(){
+                    const name=document.getElementById('login-input1').value;
+                    const passWord=document.getElementById('login-input2').value;
+                    const loginScreen=document.getElementById('login-screen');
+                    const mainContent=document.getElementById('main-content');
+                    const hasSpace1=/\s/.test(name);
+                    const hasSpace2=/\s/.test(passWord);
+                    const hasNumber=/\d/.test(name);
+                    if (name=="" || passWord==""){
+                        document.getElementById('error-message').innerHTML="Name or Password fields cannot be blank";
+                    }
+                    else if (!hasSpace1){
+                        document.getElementById('error-message').innerHTML="Name must contain a space.";
+
+                    }
+                    else if (hasSpace2){
+                        document.getElementById('error-message').innerHTML="Password cannot have a space.";
+                    }
+                    else if (hasNumber){
+                        document.getElementById('error-message').innerHTML="Name must not contain a number.";
+                    }
+                    else if (name.length<6){
+                        document.getElementById('error-message').innerHTML="Name cannot be less than 6 characters.";
+
+                    }
+                    else if (name.length>18){
+                        document.getElementById('error-message').innerHTML="Name cannot be more than 18 characters.";
+
+                    }
+                    else if (passWord.length<6){
+                        document.getElementById('error-message').innerHTML="Password cannot be less than 6 characters.";
+                    }
+                    else if (passWord.length>12){
+                        document.getElementById('error-message').innerHTML="Password cannot be more than 12 characters.";
+
+                    }
+                    else{
+                        loginScreen.style.display='none';
+                        mainContent.style.display='block';
+                    }
+                    
+                }
+                // obtains data about the ambulance transport: ambulance number, life suport level, type of  transport
+                function obtainAmbulanceInfo(){
+                    var ambInfo=[];
+                    var ambNumber=document.getElementById("input1").value;
+                    var ambLevel=document.getElementById("input2").value;
+                    switch (ambLevel){
+                        case "1":
+                            supportLevel="Basic Life Support (BLS)";
+                            break;
+                        case "2":
+                            supportLevel="Advance Life Support (ALS)";
+                            break;
+                        case "3":
+                            supportLevel="Medic";
+                            break;
+                        case "4":
+                            supportLevel="Airlift";
+                            break;
+                    }
+                    var transferLevel=document.getElementById("input3").value;
+                    switch (ambLevel){
+                        case "1":
+                            transferType="Hospital";
+                            break;
+                        case "2":
+                            transferType="Clinic";
+                            break;
+                        case "3":
+                            transferType="Nursing Facility";
+                            break;
+                        case "4":
+                            transferType="Other";
+                            break;
+                    }
+                    ambInfo.push(ambNumber);
+                    ambInfo.push(supportLevel);
+                    ambInfo.push(transferType);
+                    ambInfo.push(1);
+                    return ambInfo;
+
+                }
+                //main page: obtains inputs on demographic data and stores it in demographics array
+                function obtainPtDemographics(){
+                    var demographics=[];
+                    var date=document.getElementById("date").value;
+                    demographics.push(date);
+                    var name=document.getElementById("input4").value;
+                    demographics.push(name);
+                    var birthDate=document.getElementById("input5").value;
+                    demographics.push(birthDate);
+                    var gender=document.getElementById("input6").value;
+                    demographics.push(gender);
+                    var ssNumber=document.getElementById("input7").value;
+                    demographics.push(ssNumber);
+                    return demographics;
+
+                }
+                //main page: creates an encounter number for each ambulance pre-arrival report
+                function encounterNumber(){
+                    var digits=[];
+                    var letters=["A","B","C","D","E","F","G","H","I","J"];
+                    var number=Math.floor(Math.random()*10);
+                    var letter=letters[number];
+                    for (let i=0; i<8; i++){
+                        var number=Math.floor(Math.random()*10);
+                        digits.push(number);
+                    }
+                    for (let i=0;i<digits.length;i++)
+                        var encounterNumber=`${letter}-${digits[0]}${digits[7]}${digits[4]}${digits[5]}${digits[2]}${digits[3]}${digits[1]}`;
+                    return encounterNumber;
+
+                }
+                // adds encounter number to demographics array
+                function filePrep(encounterNumber, demographics){
+                    demographics.unshift(encounterNumber);
+                    return demographics;
+                    
+                }
+                // adds written summary to vitals array
+                function vitalsReport(vitals,report){
+                    vitals.push(report);
+                    return vitals
+                }
+            
+                
+                // main page: obtains vitals inputs of the patient
+                function obtainVitals(){
+                    var vitals=[];
+                    var heartRate=document.getElementById("input8").value;
+                    vitals.push(heartRate);
+                    var bloodPressure=document.getElementById("input9").value;
+                    vitals.push(bloodPressure);
+                    var respirations=document.getElementById("input10").value;
+                    vitals.push(respirations);
+                    var bloodSugar=document.getElementById("input11").value;
+                    vitals.push(bloodSugar);
+                    var oxygen=document.getElementById("input12").value;
+                    vitals.push(oxygen);
+                    var temperature=document.getElementById("input13").value;
+                    vitals.push(temperature);
+                    return vitals;
+                }
+                //main page: obtain's short written patient report from ambulance unit
+                function obtainReport(){
+                    var report=[];
+                    ambReport=document.getElementById("ambInput").value;
+                    report.push(ambReport);
+                    return report;
+                }
+
+                // Creates patient file objects with encounter number
+                function createPatient(demographics){
+                   class Patient{ 
+                    constructor(encounterNumber, name, birthDate, gender, ssNumber){
+                        this.encounterNumber=encounterNumber;
+                        this.name=name;
+                        this.birthDate=birthDate;
+                        this.gender=gender;
+                        this.ssNumber=ssNumber;
+                        this.report=[];
+                    }
+                    //adds data entered through form to report arrays
+                    addReport(date,ambInfo,vitals){
+                        this.report.push(date);
+                        this.report.push(ambInfo);
+                        this.report.push(vitals);
+                    }
+                    toString(){
+                        this.report.toString();
+                    }
+                    summary(){
+                        return `Date:${this.report[0]}
+                        Encounter Number:${this.encounterNumber}
+                        Pt Name: ${this.name}
+                        BirthDate:${this.birthDate}
+                        Ambulance Number: ${this.report[1][0]}
+                        Ambulance level: ${this.report[1][1]}
+                        Transfer Type: ${this.report[1][2]}
+                        Heart Rate: ${this.report[2][0]}
+                        Blood Pressure: ${this.report[2][1]}
+                        Respiration: ${this.report[2][2]}
+                        Blood Glucose:${this.report[2][3]}
+                        Oxygen: ${this.report[2][4]}
+                        Temperature: ${this.report[2][5]}
+                        Summary:
+                        ${this.report[2][6]} 
+                             `;
+                        
+                       
+                    }
+                    
+                }
+            
+                    
+
+
+                    var number=demographics[0];
+                    var name=demographics[2];
+                    var birthDate=demographics[3];
+                    var gender=demographics[4];
+                    var ssNumber=demographics[5];
+
+
+
+                    
+                    var patient1=new Patient(number, name, birthDate, gender, ssNumber)
+                    return patient1;
+            }
+            
+            // stores patient file object into an array
+            function fileChart(patient,date, ambReport, vitals){
+                patient.addReport(date, ambReport, vitals);
+                return patient;
+            }
+
+
+
+
+
+
+
+                // For main page. Main program for Home page
+
+                
+                function main(){
+                    ambInfo=obtainAmbulanceInfo();
+                    number=encounterNumber();
+                    demographics=obtainPtDemographics();
+                    var date=demographics[0];
+                    vitals=obtainVitals();
+                    report=obtainReport();
+                    demographics=filePrep(number, demographics);
+                    vitals=vitalsReport(vitals, report);
+                    patient=createPatient(demographics);
+                    patient=fileChart(patient, date, ambInfo, vitals);
+                    document.getElementById("output1").innerHTML=`${patient.summary()}`;
+                    patientArray.push(patient);
+                    return patientArray;
+
+                    
+               
+
+                }
+
+                document.getElementById('button1').addEventListener('click', loginValues)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+
+
+
+    
+    
+
+
+
+
+        </div>
+
+</body>
+
+    </html>

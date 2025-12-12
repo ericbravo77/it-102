@@ -1,0 +1,138 @@
+               body{
+                    background-image: url(/Images/ambulance3.jpg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: cover;
+                    margin:0px;
+                
+                }
+                .navbar ul{
+                    list-style: none;
+                    padding:0px;
+                    margin:0px;
+                    overflow: hidden;
+                    background-color: rgb(75, 25, 25);
+                }
+                .navbar a{
+                    color:white;
+                    text-decoration: none;
+                    padding:15px;
+                    display:block;
+                    text-align: center;
+                }
+                .navbar a:hover{
+                    background-color: rgb(180, 162, 162);
+                }
+                .navbar li{
+                    float:left;
+                }
+                #header{
+                    text-align: center;
+                    background-color:tomato;
+                }
+
+                #form1{
+                    width:100px;
+                    display:inline-block;
+                }
+                label{
+                    width:100px;
+                    display:inline-block;
+
+                }
+                #ambInput{
+                    width:400px;
+                    height:200px;
+                    font-size: medium;
+                    border-color: red;
+                    border:2px solid;
+                }
+                #output1{
+                    width:800px;
+                    height:400px;
+                    font-size: medium;
+                    border-color: red;
+                    border:2px solid;
+                    border-radius: 10px;
+                    margin-left: 45px;
+
+                }
+                #output2{
+                    width:800px;
+                    height:400px;
+                    font-size: medium;
+                    border-color: red;
+                    border:2px solid;
+                }   
+                #div1{
+                    border-radius: 10px;
+                    background:red;
+                    color:white;
+                    width:290px;
+                    padding:4px;
+
+        
+                }
+                
+                #div2{
+                    border-radius: 10px;
+                    background:red;
+                    color:white;
+                    width:290px;
+                    padding:4px;
+                    margin:5px;
+                }
+
+                #div3{
+                    border-radius:10px;
+                    background:red;
+                    color:white;
+                    width:600px;
+                    padding:6px;
+
+                }
+                #div4{
+                    border-radius: 10px;
+                    background:red;
+                    color:white;
+                    width:900px;
+                    padding:6px;
+                    text-align: center;
+                }
+                #wrapper{
+                    width:940px;
+                    margin:20px auto;
+                    
+                }
+              
+                #submit1{
+                    width:100%;
+                }
+                h2{
+                    text-align: center;
+                }
+                label{
+                    margin:4px;
+                }
+                #button2{
+                    margin-top:4px;
+                    width:100%;
+                }
+                #login-screen{
+                    text-align:center;
+                    background:red;
+                    border-radius: 10px;
+                    width:290px;
+                    padding:4px;
+                    color:white;
+                }
+                #button1{
+                    width:100%;
+                    margin-top:4px;
+                }
+                #list1{
+                    display:inline-block;
+                }
+
+                
